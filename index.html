@@ -6,9 +6,15 @@
     <title>Pokedex</title>
 </head>
 <body>
-  <input id="search" />
-  <button id="searchButton">Search</button>
+  <label for="searchLine">Search Pokemon:</label>
+  <input id="searchLine" onkeyup="search()" placeholder="Search..." />
   <div id="results">
+    <p id="pokemon-name"></p>
+    <p id="pokemon-height"></p>
+    <p id="pokemon-weight"></p>
+    <img id="pokemon-image" src=""> 
+    <p id="types"></p>
+    <div id="list"></div>
   </div>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script> <!-- todo later: use a local copy installed via npm -->
   <script src="./main.js"></script>  <!-- todo: change to type:module -->
