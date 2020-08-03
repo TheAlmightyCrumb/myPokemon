@@ -1,0 +1,56 @@
+/* initializing variables of colors I like to use */
+
+:root {
+    --mainblue: #6a95cf;
+    --mainbright: #ccecf7;
+    --maingray: #433b35;
+}
+
+/* 'fixed' is the right way to stretch the gradient, so it is covering the page */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    background-image: url('5c289afb9a15753de6893a93_60. Zircon.jpg');
+    /* background-image: url('5c289afb9a15758033893a7f_49. Soft Peach.jpg'); */
+    /* background: linear-gradient(180deg, rgba(204,236,247,1) 0%, rgba(248,131,121,1) 90%) fixed; */
+}
+
+#searchLine {
+    position: relative;
+    top: 1.5em;
+    padding: 15px 15px 15px 15px;
+    width: 35%;
+    font-size: 1em;
+    border: 1px solid var(--maingray);
+    transition-duration: 0.2s;
+}
+
+#searchLine:focus {
+    font-weight: bold;
+    background-color: var(--maingray);
+    color: white;
+}
+
+#results {
+    position: relative;
+    top: 1.5em;
+}
+
+#pokemon-name {
+    font-size: 1.25rem;
+}
+
+.newLi:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* .newItem:hover {
+    font-weight: bold;
+    text-decoration: underline;
+} */
+
+ol {
+    list-style: none;
+}
