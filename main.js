@@ -13,8 +13,8 @@ const search = () => {
     pokemonName.textContent = res.data.name[0].toUpperCase() + res.data.name.substring(1);
     pokemonName.style.color = 'black';
     pokemonName.style.fontWeight = 'bold';
-    pokemonHeight.textContent = res.data.height;
-    pokemonWeight.textContent = res.data.weight;
+    pokemonHeight.textContent = `Height: ${res.data.height}`;
+    pokemonWeight.textContent = `Weight: ${res.data.weight}`;
     pokemonImg.hidden = false;
     pokemonImg.alt = res.data.name[0].toUpperCase() + res.data.name.substring(1);
     // if (res.data.sprites.front_default) {
@@ -42,7 +42,7 @@ const search = () => {
       const newItem = document.createElement('p');
       newItem.setAttribute('class', 'newItem');
       newItem.style.cursor = 'pointer';
-      newItem.textContent = `${count} type is ${pokemonType.type.name[0].toUpperCase() + pokemonType.type.name.substring(1)}`;
+      newItem.textContent = `type ${count} is ${pokemonType.type.name[0].toUpperCase() + pokemonType.type.name.substring(1)}`;
       const list = document.createElement('ol');
       list.hidden = true;
       axios.get(`https://pokeapi.co/api/v2/type/${pokemonType.type.name}/`)
