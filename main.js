@@ -15,14 +15,26 @@ const search = () => {
     pokemonName.style.fontWeight = 'bold';
     pokemonHeight.textContent = res.data.height;
     pokemonWeight.textContent = res.data.weight;
-    pokemonImg.src = res.data.sprites.front_default;
+    pokemonImg.hidden = false;
+    pokemonImg.alt = res.data.name[0].toUpperCase() + res.data.name.substring(1);
+    // if (res.data.sprites.front_default) {
+    //   pokemonImg.src = res.data.sprites.front_default;
+    // } else {
+    //   pokemonImg.hidden = true;
+    // }
+    (res.data.sprites.front_default) ? pokemonImg.src = res.data.sprites.front_default : pokemonImg.hidden = true; // instead of 'if'-'else'
+    // console.log(pokemonImg.src); // in order to check image address
+    // pokemonImg.src = res.data.sprites.front_default;
     pokemonList.textContent = '';
     namesList.textContent = 'List of Pokemon types:';
     pokemonImg.onmouseover = () => {
       (res.data.sprites.back_default) ? pokemonImg.src = res.data.sprites.back_default : pokemonImg.src = res.data.sprites.front_default;
     }
     // pokemonImg.onmouseover = () => pokemonImg.src = res.data.sprites.back_default;
-    pokemonImg.onmouseout = () => pokemonImg.src = res.data.sprites.front_default;
+    pokemonImg.onmouseout = () => {
+      (res.data.sprites.front_default) ? pokemonImg.src = res.data.sprites.front_default : pokemonImg.src = '';
+    }
+    // pokemonImg.onmouseout = () => pokemonImg.src = res.data.sprites.front_default;
     let types = res.data.types;
     let count = 0;
     types.map((pokemonType) => {
@@ -30,7 +42,7 @@ const search = () => {
       const newItem = document.createElement('p');
       newItem.setAttribute('class', 'newItem');
       newItem.style.cursor = 'pointer';
-      newItem.textContent = `${count} more of type: ${pokemonType.type.name[0].toUpperCase() + pokemonType.type.name.substring(1)}`;
+      newItem.textContent = `${count} type is ${pokemonType.type.name[0].toUpperCase() + pokemonType.type.name.substring(1)}`;
       const list = document.createElement('ol');
       list.hidden = true;
       axios.get(`https://pokeapi.co/api/v2/type/${pokemonType.type.name}/`)
@@ -58,7 +70,7 @@ const search = () => {
       pokemonName.style.fontWeight = 'bold';
       pokemonHeight.textContent = '';
       pokemonWeight.textContent = '';
-      pokemonImg.src = '';
+      pokemonImg.hidden = true;
       namesList.textContent = '';
       pokemonList.textContent = '';
     })
