@@ -18,7 +18,10 @@ const search = () => {
     pokemonImg.src = res.data.sprites.front_default;
     pokemonList.textContent = '';
     namesList.textContent = 'List of Pokemon types:';
-    pokemonImg.onmouseover = () => pokemonImg.src = res.data.sprites.back_default;
+    pokemonImg.onmouseover = () => {
+      (res.data.sprites.back_default) ? pokemonImg.src = res.data.sprites.back_default : pokemonImg.src = res.data.sprites.front_default;
+    }
+    // pokemonImg.onmouseover = () => pokemonImg.src = res.data.sprites.back_default;
     pokemonImg.onmouseout = () => pokemonImg.src = res.data.sprites.front_default;
     let types = res.data.types;
     let count = 0;
