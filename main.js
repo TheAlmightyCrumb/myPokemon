@@ -15,8 +15,18 @@ const search = () => {
     pokemonWeight.textContent = res.data.weight;
     pokemonImg.src = res.data.sprites.front_default;
     pokemonList.textContent = '';
+    listNames.textContent = 'List of Pokemon types';
     pokemonImg.onmouseover = () => pokemonImg.src = res.data.sprites.back_default;
     pokemonImg.onmouseout = () => pokemonImg.src = res.data.sprites.front_default;
+    let types = res.data.types;
+    let count = 0;
+    types.map((pokemonType) => {
+      count++;
+      const newItem = document.createElement('p');
+      newItem.style.cursor = 'pointer';
+      newItem.textContent = `${count}, ${pokemonType.type.name}`;
+      const list = document.createElement('ol');
+    })
     })
     .catch(() => {
       pokemonName.textContent = '';
